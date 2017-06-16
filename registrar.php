@@ -3,20 +3,40 @@
 
 	$acoes = new Actions();
 
-	if(isset($_POST['logar'])) {
+	if(isset($_POST['criar'])) {
+		$nome = $_POST['nome'];
 		$email = $_POST['email'];
 		$senha = $_POST['senha'];
+		$data = date("Y/m/d");
 		$acoes->setTabela('users');
-		$verifica = $acoes->Login($email, $senha);
+		$verifica = $acoes->Check($email);
 
-		if($verifica <= 0)
+		if($verifica != '')
 		{
-			echo "<h5>Email ou senha inválido.</h5>";
+			echo "<h5>Este endereço de e-mail já está registrado.</h5>";
+		}
+		elseif($nome == '' OR strlen($nome) < 5)
+		{
+			echo "<h5>Escreva seu nome corretamente.</h5>";
+		}
+		elseif($senha == '' OR strlen($senha) < 6)
+		{
+			echo "<h5>A senha deve conter no mínimo 6 caracteres.</h5>";
 		}
 		else
 		{
-			setcookie("login", $email);
-			header("Location: ./");
+			$acoes->setNome($nome);
+			$acoes->setEmail($email);
+			$acoes->setSenha($senha);
+			$acoes->setData($data);
+			if($acoes->CreateUser()) 
+			{
+				echo '<h5>Conta criada com sucesso. Faça o <a href="login.php">login</a> aqui.</h5>';
+			}
+			else
+			{
+				echo "<h5>Ocorreu um erro ao tentar criar seu cadastro. Tente novamente.</h5>";
+			}
 		}
 	}
  ?>
@@ -43,12 +63,21 @@
 			width: 300px;
 			margin: 0 auto;
 		}
+		input[type="text"] {
+			border: 0.8px solid #ccc;
+			width: 250px;
+			height: 25px;
+			padding-left: 10px;
+			border-radius: 3px;
+			margin-top: 10px;
+		}
 		input[type="email"] {
 			border: 0.8px solid #ccc;
 			width: 250px;
 			height: 25px;
 			padding-left: 10px;
 			border-radius: 3px;
+			margin-top: 10px;
 		}
 		input[type="password"] {
 			border: 0.5px solid #ccc;
@@ -77,22 +106,17 @@
 			text-align: center;
 			margin-top: 20px;
 		}
-		h5 {
-			text-align: center;
-			margin-top: 20px;
-			position: relative;
-			top: 470px;
-		}
 	</style>
 </head>
 <body>
 	<img src="img/logo.png" alt="Logotipo - Social Friends">
-	<h2>Entre com sua conta</h2>
+	<h2>Criar uma conta</h2>
 	<form method="POST" action="">
+		<input type="text" placeholder="Nome" id="nome" name="nome">
 		<input type="email" placeholder="Email" id="email" name="email">
 		<input type="password" placeholder="Senha" id="senha" name="senha">
-		<input type="submit" value="Logar" id="logar" name="logar">
+		<input type="submit" value="Criar" id="criar" name="criar">
 	</form>
-	<h4>Ainda não tem conta? <a href="registrar.php">Crie uma!</a></h4>
+	<h4>Já tem conta? <a href="login.php">Entre aqui!</a></h4>
 </body>
 </html>

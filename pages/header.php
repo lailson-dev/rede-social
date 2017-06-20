@@ -21,6 +21,8 @@
  		#topo img[name="menu"]{float: right; margin-right: 25px; margin-top: -22px;}
  		#topo input[type="text"]{display: block; margin: auto; width: 300px; border: none; border-radius: 3px; background: #f6f6f6; height: 25px; padding-left: 10px; box-shadow: inset  0 0 3px #000;}
  		#topo form{padding-top: 20px; width: 300px; display: block; margin: auto;}
+
+ 		#footer{bottom: 0; text-align: center; color: #666666;}
  	</style>
  </head>
  <body>
@@ -33,6 +35,5 @@
  		<a href="#"><img src="img/chat.png" alt="Chat" width="30" name="menu"></a>
  		<a href="#"><img src="img/perfil.png" alt="Imagem de Perfil" width="30" name="menu"></a>
  	</div>
- 	
  </body>
  </html>

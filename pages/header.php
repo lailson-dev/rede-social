@@ -27,13 +27,13 @@
  </head>
  <body>
  	<div id="topo">
- 		<a href="#"><img src="img/logo.png" alt="Logotipo" width="100" name="logo"></a>
+ 		<a href="index.php"><img src="img/logo.png" alt="Logotipo" width="100" name="logo"></a>
  		<form action="" method="GET">
  			<input type="text" placeholder="Pesquise alguém..." name="query" autocomplete="off">
  			<input type="submit" hidden>
  		</form>
  		<a href="#"><img src="img/chat.png" alt="Chat" width="30" name="menu"></a>
- 		<a href="#"><img src="img/perfil.png" alt="Imagem de Perfil" width="30" name="menu"></a>
+ 		<a href="myprofile.php"><img src="img/perfil.png" alt="Imagem de Perfil" width="30" name="menu"></a>
  	</div>
  </body>
  </html>

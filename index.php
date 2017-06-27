@@ -56,8 +56,7 @@
  <html lang="pt-br">
  <head>
  	<meta charset="UTF-8">
- 	<title>Rede Social - Desenvolvida afins de estudo</title>
-
+ 	<title>Rede Social - Desenvolvida para fins didático</title>
  	<style>
  		#publish{width: 400px; height: 220px; display: block; margin: auto; border: none; border-radius: 5px; background: #fff; box-shadow: 0 0 3px #A1A1A1; margin-top: 30px;}
  		#publish textarea{width: 365px; height: 150px; display: block; margin: auto; border-radius: 5px; padding: 5px 0 0 5px; border-width: 1px; border-color: #A1A1A1;}
@@ -65,7 +64,7 @@
  		#publish input[type="submit"]{width: 70px; height: 25px; border-radius: 3px; float: right; margin: 5px 15px 0 0; border: none; background: #4169E1; color: #fff; cursor: pointer;}
  		#publish input[type="submit"]:hover{background: #001F3F;}
 
- 		.pub{width: 400px; min-height: 70px; max-height: 1000px; display: block; margin: auto; border: none; border-radius: 5px; background-color: #fff; box-shadow: 0 0 3px #A1A1A1; margin-top: 30px; margin-top: 20px;}
+ 		.pub{width: 400px; min-height: 70px; max-height: 1000px; display: block; margin: auto; border: none; border-radius: 5px; background-color: #fff; box-shadow: 0 0 6px #A1A1A1; margin-top: 30px; margin-top: 20px;}
  		.pub a{color: #666666; text-decoration: none;}
  		.pub a:hover{color: #111;}
  		.pub p{margin-left: 10px; color: #666666; padding-top: 10px;}
@@ -88,13 +87,6 @@
 
  	<?php
 
- 		$email = "";
- 		$id = "";
- 		$nome = "";
- 		$imagem = "";
- 		$texto = "";
- 		$data = "";
-
  		foreach($comando->Pubs() as $key => $pub)
  		{
  			$email = "";
@@ -104,7 +96,7 @@
  			$texto = $pub->texto;
  			$data = $pub->data;
 
- 			foreach ($comando->CheckAll($email) as $key => $info_user)
+ 			foreach ($comando->CheckForEmail($email) as $key => $info_user)
 	 		{
 	 			$nome = $info_user->nome;
 	 		}
@@ -112,14 +104,14 @@
 			if($imagem == "")
 			{
 				echo '<div class="pub" id="'.$id_pub.'">
-						<p><a href="#">'.$nome.'</a> - '.$data.'</p>
+						<p><a href="profile.php?id='.$info_user->id.'">'.$nome.'</a> - '.$data.'</p>
 						<span>'.$texto.'</span><br/>
 					 </div>';
 			}
 			else
 			{
 				echo '<div class="pub" id="'.$id_pub.'">
-						<p><a href="#">'.$nome.'</a> - '.$data.'</p>
+						<p><a href="profile.php?id='.$info_user->id.'">'.$nome.'</a> - '.$data.'</p>
 						<span>'.$texto.'</span>
 						<img src="upload/'.$imagem.'">
 					 </div>';

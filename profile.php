@@ -43,7 +43,7 @@
  	</style>
  </head>
  <body>
-
+	
 	<?php
 		if($value['img'] == "")
 		{

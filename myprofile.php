@@ -1,4 +1,5 @@
 <?php 
+
 	require_once 'pages/header.php';
 	require_once 'inc/Actions.php';
 

@@ -1,5 +1,5 @@
 <?php 
-
+ini_set('default_charset','iso-8859-1');
 	/* CLASSE RESPONSÁVEL PELA CONEXÃO COM O BANCO DE DADOS */
 	class DB
 	{

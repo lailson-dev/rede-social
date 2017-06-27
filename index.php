@@ -1,4 +1,5 @@
 <?php 
+
 	require_once 'pages/header.php';
 	require_once 'inc/Actions.php';
 
@@ -86,7 +87,6 @@
  	</div>
 
  	<?php
-
  		foreach($comando->Pubs() as $key => $pub)
  		{
  			$email = "";
